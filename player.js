@@ -5,9 +5,6 @@ class player {
     this.frame = 0;
   }
 
-  jump() {
-  }
-
   show(){
     image(loadImage("assets/images/gameart2d_com/png/Idle (" + this.frame + ").png"), this.x, this.y);
     this.frame = this.frame + 1;

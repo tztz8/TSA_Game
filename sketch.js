@@ -1,5 +1,8 @@
 var floorLight, floor;
 var seling, selingLeft, selingRight;
+var atI;
+var f1r = false;
+var f2r = false;
 
 function setup() {
   var myCanvas = createCanvas(720, 400); // I save this to a variable so i can chage this about it
@@ -14,15 +17,19 @@ function setup() {
 
 function draw() {
   image(selingLeft, 0, 0, 80, 80);
-  for (var i = 0; i < 8;i = i + 2){
+  for (var i = 0; i < 9;i = i + 2){
     image(floorLight, i*80, height-80, 80, 80);
-    if(i != 0 || i != 8){
-      image(seling, i*80, 0, 80, 80);
+    if (i != 0){
+      if (i != 8){
+        image(seling, i*80, 0, 80, 80);
+      }
     }
+    //debugger;
   }
   for (var i = 1; i < 8;i = i + 2){
     image(floor, i*80, height-80, 80, 80);
     image(seling, i*80, 0, 80, 80);
+    //debugger;
   }
   image(selingRight, width-80, 0, 80, 80);
 }

@@ -1,4 +1,4 @@
-
+var player1 = new player();
 
 function setup() {
   var myCanvas = createCanvas(tilesSet.width*tilesSet.size, tilesSet.height*tilesSet.size); // I save this to a variable so i can chage this about it
@@ -9,11 +9,15 @@ function setup() {
   setupFloor();
   setupSeling();
 
+  // set player inshal place
+  player1.x = 0;
+  player1.y = height / 2;
 }
 
 function draw() {
   for(var i = 0; i < tilesSet.width; i++){
     floor[i].show();
     seling[i].show();
+    player1.show();
   }
 }

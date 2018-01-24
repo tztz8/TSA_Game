@@ -20,9 +20,7 @@ class tile {
 
 // seting up the floor
 var floor = new Array;
-function setupFloor() {
-  var floorNormal = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (2).png");
-  var floorLight = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (1).png");
+function setupFloor(floorNormal, floorLight) {
   for(var i = 0; i < tilesSet.width; i++){
     if (0 == i % 2){
       floor[i] = new tile(i*tilesSet.size,
@@ -43,8 +41,7 @@ function setupFloor() {
 
 // seting up the floor
 var seling = new Array;
-function setupSeling() {
-  var selingNormal = loadImage("assets/images/gameart2d_com/png/Tiles/Tile (10).png");
+function setupSeling(selingNormal) {
   for(var i = 0; i < tilesSet.width; i++){
     seling[i] = new tile(i*tilesSet.size,
        0,

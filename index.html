@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>TSA Game</title><!-- This is the title -->
+
+		<!-- this is css (Cascading Style Sheet) -->
+		<link rel="stylesheet" type="text/css" href="default.css">
+
+		<!-- useing p5.js insted of js -->
+		<!-- need this to be able to run p5.js script file -->
     <script src="Lib/p5.js"></script>
     <script src="Lib/addons/p5.dom.js"></script>
     <script src="Lib/addons/p5.sound.js"></script>
-    <script src="sketch.js"></script>
-  </head>
-  <body>
-  </body>
+		<!-- this is my script (in p5.js) -->
+		<script src="sketch.js"></script>
+
+	</head>
+	<body>
+    <br>
+		<TABLE Align="center" Border="1" id="wrapper">
+			<TR>
+				<TD>
+					<div id='myContainer' alt="my p5.js scrip"></div> <!-- This is were the p5 scrip will run becuse with in the scrip it is told to be here-->
+				</TD>
+			</TR>
+		</TABLE>
+    <br>
+	</body>
 </html>

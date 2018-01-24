@@ -18,6 +18,6 @@ function draw() {
   for(var i = 0; i < tilesSet.width; i++){
     floor[i].show();
     seling[i].show();
-    player1.show();
   }
+  player1.show();
 }

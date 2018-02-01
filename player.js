@@ -9,7 +9,9 @@ class player {
     this.x = 0;
     this.y = 0;
     this.frameAt = 1;
-    this.frame = new Array(3);
+    this.frameNumber = [];
+    this.frameNumberAt = 10;
+    this.frame = [];
     this.state = 1;
     this.speed = 0;
     this.size = 80;
@@ -17,14 +19,18 @@ class player {
 
   load(){
     for(var i = 0; i < 3; i++){
-      this.frame[i] = new Array(10);
+      this.frame[i] = [];
     }
     // Load imges
+    this.frameNumber[0] = 10;
     for(var i = 1;i < 11; i++){ // Load Idle
       this.frame[0][i] = loadImage("assets/images/gameart2d_com/png/Idle (" + i + ").png");
+      console.log(i);
     }
+    this.frameNumber[1] = 8
     for(var i = 1;i < 9; i++){ // Load Run
       this.frame[1][i] = loadImage("assets/images/gameart2d_com/png/Run (" + i + ").png");
+      console.log(i);
     }/*
     for(var i = 1;i < 11; i++){ // Load Jump
       this.frame[2][i] = loadImage("assets/images/gameart2d_com/png/Jump (" + i + ").png");
@@ -45,10 +51,12 @@ class player {
     // Image State
     switch (this.state) {
       case 0:
-        image(this.frame[0][this.frameAt], this.x, this.y);
+        this.frameNumberAt = this.frameNumber[0];
+        image(this.frame[0][this.frameAt], this.x, this.y, this.size, this.size);
         break;
       case 1:
-        image(this.frame[1][this.frameAt], this.x, this.y);
+        this.frameNumberAt = this.frameNumber[1];
+        image(this.frame[1][this.frameAt], this.x, this.y, this.size, this.size);
         break;/*
       case 2:
         image(this.frame[2][this.frameAt], this.x, this.y, 80, 80);
@@ -59,8 +67,8 @@ class player {
     }
     // change frame
     this.frameAt = this.frameAt + 1;
-    if(this.frameAt > 10){
-      this.frameAt = 0;
+    if(this.frameAt > this.frameNumberAt){
+      this.frameAt = 1;
     }
     // update pos
     this.x = this.x + this.speed;

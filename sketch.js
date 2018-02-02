@@ -46,3 +46,13 @@ function resetAll(){
   player1.timerOn = false;
   player1.y = player1.yFloor;
 }
+
+function keyTyped() {
+  if (key === 'd') {
+    player1.run(8);
+  } else if (key === 's') {
+    player1.stop();
+  }
+  // uncomment to prevent any default behavior
+  // return false;
+}

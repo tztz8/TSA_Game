@@ -18,6 +18,8 @@ class player {
     this.frame = [];
     this.state = 0;
     this.size = 80;
+    this.timer = 0;
+    this.timerOn = false;
   }
 
   load(){
@@ -46,6 +48,10 @@ class player {
 
   jump(velocity){
     this.yv = velocity;
+    if(!this.timerOn){
+      this.timerOn = true;
+      this.timer = 0;
+    }
     this.state = 2;
   }
 
@@ -54,7 +60,7 @@ class player {
     this.state = 0;
   }
 
-  show(widthIn){
+  show(widthIn, worldSpeedIn){
     // print Image
     this.frameNumberAt = this.frameNumber[this.state];
     image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
@@ -71,6 +77,14 @@ class player {
       this.x = 0;
     }
     // update pos in the y
-
+    if(this.timerOn){
+      this.timer++;
+    }
+    if(this.y > this.yFloor){
+      this.timer = 0;
+      this.timerOn = false;
+      stop();
+    }
+    this.y = this.yFloor + ((0-this.yv)*(this.timer/worldSpeedIn)) + ((1/2)*(0-this.ya)*((this.timer/worldSpeedIn)*(this.timer/worldSpeedIn)));
   }
 }

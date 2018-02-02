@@ -34,8 +34,8 @@ function draw() {
     seling[i].show();
   }
   if(player1.state == 2){
-    player1.show(width);
+    player1.show(width, worldSpeed);
   }else {
-    player1.show(width);
+    player1.show(width, worldSpeed);
   }
 }

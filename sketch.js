@@ -5,6 +5,7 @@ var selingNormalimg;
 var player1 = new player();
 
 var worldSpeed = 24;
+var worldSpeedStart = worldSpeed;
 
 function preload(){
   player1.load();
@@ -33,9 +34,5 @@ function draw() {
     floor[i].show();
     seling[i].show();
   }
-  if(player1.state == 2){
-    player1.show(width, worldSpeed);
-  }else {
-    player1.show(width, worldSpeed);
-  }
+  player1.show(width, worldSpeedStart);
 }

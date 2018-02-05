@@ -36,3 +36,13 @@ function draw() {
   }
   player1.show(width, worldSpeedStart);
 }
+
+function resetAll(){
+  worldSpeed = worldSpeedStart;
+  player1.stop();
+  player1.x = 0;
+  player1.yv = 0;
+  player1.timer = 0;
+  player1.timerOn = false;
+  player1.y = player1.yFloor;
+}

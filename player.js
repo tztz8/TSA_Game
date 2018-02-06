@@ -68,7 +68,7 @@ class player {
     }
     // print Image
     image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
-    // change frame 
+    // change frame
     this.frameAt = this.frameAt + 1;
     // update pos in the x
     this.x = this.x + this.speed;
@@ -80,7 +80,10 @@ class player {
     // update pos in the y
     if(this.timerOn){
       this.timer++;
+    }else if (this.state == 2) {
+      this.state = 0;
     }
+
     if(this.y > this.yFloor){
       this.timer = 0;
       this.timerOn = false;

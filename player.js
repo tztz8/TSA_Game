@@ -61,14 +61,15 @@ class player {
   }
 
   show(widthIn, worldSpeedIn){
-    // print Image
+    // Frame limit
     this.frameNumberAt = this.frameNumber[this.state];
-    image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
-    // change frame
-    this.frameAt = this.frameAt + 1;
     if(this.frameAt > this.frameNumberAt){
       this.frameAt = 1;
     }
+    // print Image
+    image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
+    // change frame 
+    this.frameAt = this.frameAt + 1;
     // update pos in the x
     this.x = this.x + this.speed;
     if(this.x > widthIn){

@@ -7,6 +7,9 @@ var player1 = new player();
 var worldSpeed = 24;
 var worldSpeedStart = worldSpeed;
 
+var runingSpeed = 8;
+var jumpV = 25;
+
 function preload(){
   player1.load();
   floorNormalimg = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (2).png");
@@ -48,11 +51,32 @@ function resetAll(){
 }
 
 function keyTyped() {
-  if (key === 'd') {
-    player1.run(8);
-  } else if (key === 's') {
-    player1.stop();
+  switch (key) {
+    case 'd':
+      player1.run(runingSpeed);
+      break;
+    case 'a':
+      player1.run(0-runingSpeed);
+      break;
+    case 's':
+      player1.stop();
+      break;
+    case 'w':
+      player1.jump(jumpV);
+      break;
+    case 'r':
+      resetAll();
+      break;
+    case '1':
+      worldSpeed = worldSpeedStart*0.5;
+      break;
+    case '2':
+      worldSpeed = worldSpeedStart;
+      break;
+    case '3':
+      worldSpeed = worldSpeedStart*2;
+      break;
+    default:
+    alert("That key is not in use key:"+key);
   }
-  // uncomment to prevent any default behavior
-  // return false;
 }

@@ -35,6 +35,11 @@ class player {
     this.speed = speed;
     this.state = 1;
   }
+  
+  jump(gravity){
+      this.state = 2;
+      
+  }
 
   stop(){
     this.speed = 0;
@@ -54,13 +59,13 @@ class player {
         image(this.frame[2][this.frameAt], this.x, this.y, 80, 80);
         break;*/
       default:
-        alert("something Whent Wrong");
+        alert("something Went Wrong");
         console.log(this.state);
     }
     // change frame
     this.frameAt = this.frameAt + 1;
     if(this.frameAt > 10){
-      this.frameAt = 0;
+      this.frameAt = 1;
     }
     // update pos
     this.x = this.x + this.speed;

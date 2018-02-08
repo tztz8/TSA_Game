@@ -11,7 +11,7 @@ class player {
     this.yFloor = 0;
     this.y = 0;
     this.yv = 0;
-    this.ya = -9.81;
+    this.ya = -20;
     this.frameAt = 1;
     this.frameNumber = [];
     this.frameNumberAt = 10;

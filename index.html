@@ -16,7 +16,7 @@
 
     <!-- other files need for the game -->
     <script type="text/javascript" src="tiles.js"></script> <!-- help set up tiles -->
-		<script type="text/javascript" src="player.js"></script> 
+		<script type="text/javascript" src="player.js"></script>
 		<!-- this is the script that startes every thing (in p5.js) -->
 		<script type="text/javascript" src="sketch.js"></script>
 	</head>
@@ -25,7 +25,22 @@
 		<TABLE Align="center" Border="1" id="wrapper">
 			<TR>
 				<TD>
+					<p>use w,a,s,d for moving<br>1,2,3 to change the speed of the world<br>r to rest the world recomend to use f5 insted</p>
+				</TD>
+			</TR>
+			<TR>
+				<TD>
 					<div id='myContainer' alt="my p5.js scrip"></div> <!-- This is were the p5 scrip will run becuse with in the scrip it is told to be here-->
+				</TD>
+			</TR>
+			<TR>
+				<TD>
+					<button onclick="resetAll();">reset</button>
+				</TD>
+			</TR>
+			<TR>
+				<TD>
+					<p>Prest Ctrl and F5 to see the new code runing</p>
 				</TD>
 			</TR>
 		</TABLE>

@@ -7,28 +7,38 @@
 class player {
   constructor(){
     this.x = 0;
-    this.y = 0;
-    this.frameAt = 1;
-    this.frame = new Array(3);
-    this.state = 1;
     this.speed = 0;
+    this.yFloor = 0;
+    this.y = 0;
+    this.yv = 0;
+    this.ya = -9.81;
+    this.frameAt = 1;
+    this.frameNumber = [];
+    this.frameNumberAt = 10;
+    this.frame = [];
+    this.state = 0;
     this.size = 80;
+    this.timer = 0;
+    this.timerOn = false;
   }
 
   load(){
     for(var i = 0; i < 3; i++){
-      this.frame[i] = new Array(10);
+      this.frame[i] = [];
     }
     // Load imges
+    this.frameNumber[0] = 10;
     for(var i = 1;i < 11; i++){ // Load Idle
       this.frame[0][i] = loadImage("assets/images/gameart2d_com/png/Idle (" + i + ").png");
     }
+    this.frameNumber[1] = 8
     for(var i = 1;i < 9; i++){ // Load Run
       this.frame[1][i] = loadImage("assets/images/gameart2d_com/png/Run (" + i + ").png");
-    }/*
+    }
+    this.frameNumber[2] = 10
     for(var i = 1;i < 11; i++){ // Load Jump
       this.frame[2][i] = loadImage("assets/images/gameart2d_com/png/Jump (" + i + ").png");
-    }*/
+    }
   }
 
   run(speed){
@@ -36,38 +46,49 @@ class player {
     this.state = 1;
   }
 
+  jump(velocity){
+    this.yv = velocity;
+    if(!this.timerOn){
+      this.timerOn = true;
+      this.timer = 0;
+    }
+    this.state = 2;
+  }
+
   stop(){
     this.speed = 0;
     this.state = 0;
   }
 
-  show(widthIn){
-    // Image State
-    switch (this.state) {
-      case 0:
-        image(this.frame[0][this.frameAt], this.x, this.y);
-        break;
-      case 1:
-        image(this.frame[1][this.frameAt], this.x, this.y);
-        break;/*
-      case 2:
-        image(this.frame[2][this.frameAt], this.x, this.y, 80, 80);
-        break;*/
-      default:
-        alert("something Whent Wrong");
-        console.log(this.state);
+  show(widthIn, worldSpeedIn){
+    // Frame limit
+    this.frameNumberAt = this.frameNumber[this.state];
+    if(this.frameAt > this.frameNumberAt){
+      this.frameAt = 1;
     }
+    // print Image
+    image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
     // change frame
     this.frameAt = this.frameAt + 1;
-    if(this.frameAt > 10){
-      this.frameAt = 0;
-    }
-    // update pos
+    // update pos in the x
     this.x = this.x + this.speed;
     if(this.x > widthIn){
       this.x = widthIn - this.size;
     }else if(this.x < 0){
       this.x = 0;
     }
+    // update pos in the y
+    if(this.timerOn){
+      this.timer++;
+    }else if (this.state == 2) {
+      this.state = 0;
+    }
+
+    if(this.y > this.yFloor){
+      this.timer = 0;
+      this.timerOn = false;
+      stop();
+    }
+    this.y = this.yFloor + ((0-this.yv)*(this.timer/worldSpeedIn)) + ((1/2)*(0-this.ya)*((this.timer/worldSpeedIn)*(this.timer/worldSpeedIn)));
   }
 }

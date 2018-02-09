@@ -83,10 +83,10 @@ class player {
     // set lim to the x
     if(this.x > widthIn-this.size){
       this.x = widthIn - this.size;
-      stop();
+      this.stop();
     }else if(this.x < 0){
       this.x = 0;
-      stop();
+      this.stop();
     }
     // update time for jumping
     if(this.timerOn){
@@ -98,7 +98,6 @@ class player {
     if(this.y > this.yFloor){
       this.timer = 0;
       this.timerOn = false;
-      stop();
     }
     var timeAT = this.timer/(worldSpeedIn/2);
     this.y = this.yFloor + ((0-this.yv)*(timeAT)) + ((1/2)*(0-this.ya)*((timeAT)*(timeAT)));

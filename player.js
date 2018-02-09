@@ -61,6 +61,14 @@ class player {
   }
 
   show(widthIn, worldSpeedIn){
+    // seting crect state
+    if(this.timer){
+      this.state = 2;
+    }else if(this.speed > 0 || this.speed < 0){
+      this.state = 1;
+    }else{
+      this.state = 0;
+    }
     // Frame limit
     this.frameNumberAt = this.frameNumber[this.state];
     if(this.frameAt > this.frameNumberAt){

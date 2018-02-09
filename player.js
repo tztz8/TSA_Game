@@ -89,6 +89,7 @@ class player {
       this.timerOn = false;
       stop();
     }
-    this.y = this.yFloor + ((0-this.yv)*(this.timer/worldSpeedIn)) + ((1/2)*(0-this.ya)*((this.timer/worldSpeedIn)*(this.timer/worldSpeedIn)));
+    var timeAT = this.timer/(worldSpeedIn/2);
+    this.y = this.yFloor + ((0-this.yv)*(timeAT)) + ((1/2)*(0-this.ya)*((timeAT)*(timeAT)));
   }
 }

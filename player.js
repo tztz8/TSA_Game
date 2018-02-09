@@ -80,18 +80,21 @@ class player {
     this.frameAt = this.frameAt + 1;
     // update pos in the x
     this.x = this.x + this.speed;
-    if(this.x > widthIn){
+    // set lim to the x
+    if(this.x > widthIn-this.size){
       this.x = widthIn - this.size;
+      stop();
     }else if(this.x < 0){
       this.x = 0;
+      stop();
     }
-    // update pos in the y
+    // update time for jumping
     if(this.timerOn){
       this.timer++;
     }else if (this.state == 2) {
       this.state = 0;
     }
-
+    // update y pos
     if(this.y > this.yFloor){
       this.timer = 0;
       this.timerOn = false;

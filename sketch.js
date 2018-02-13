@@ -8,7 +8,7 @@ var worldSpeed = 24;
 var worldSpeedStart = worldSpeed;
 
 var runingSpeed = 8;
-var jumpV = 25;
+var jumpV = 300;
 
 function preload(){
   player1.load();

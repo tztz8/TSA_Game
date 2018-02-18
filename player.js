@@ -6,23 +6,29 @@
 */
 class player {
   constructor(){
+    // things need for x pos
     this.x = 0;
     this.speed = 0;
+    this.rTimer = 0;
+    this.rTimerOn = false;
+    // things need for y pos
     this.yFloor = 0;
     this.y = 0;
     this.yv = 0;
     this.ya = -600;
+    this.jTimer = 0;
+    this.jTimerOn = false;
+    // things need for frame
     this.frameAt = 1;
     this.frameNumber = [];
     this.frameNumberAt = 10;
     this.frame = [];
     this.state = 0;
     this.size = 80;
-    this.timer = 0;
-    this.timerOn = false;
   }
 
   load(){
+    // set each frame sate to a ary for the next sete
     for(var i = 0; i < 3; i++){
       this.frame[i] = [];
     }
@@ -43,26 +49,32 @@ class player {
 
   run(speed){
     this.speed = speed;
+    if(!this.rTimerOn){
+      this.rTimerOn = true;
+      this.rTimer = 0;
+    }
     this.state = 1;
   }
 
   jump(velocity){
     this.yv = velocity;
-    if(!this.timerOn){
-      this.timerOn = true;
-      this.timer = 0;
+    if(!this.jTimerOn){
+      this.jTimerOn = true;
+      this.jTimer = 0;
     }
     this.state = 2;
   }
 
   stop(){
     this.speed = 0;
+    this.rTimerOn = false;
+    this.rTimer = 0;
     this.state = 0;
   }
 
   show(widthIn, worldSpeedIn){
     // seting crect state
-    if(this.timer){
+    if(this.jTimerOn){
       this.state = 2;
     }else if(this.speed > 0 || this.speed < 0){
       this.state = 1;
@@ -88,18 +100,38 @@ class player {
       this.x = 0;
       this.stop();
     }
+    // update speed
+    if(this.rTimerOn){
+      this.rTimer++;
+      if(this.speed > 0){
+        this.speed = this.speed - (this.rTimer/(worldSpeedIn));
+        if(!(this.speed > 0)){
+          this.stop();
+        }
+      }else if(this.speed < 0){
+        this.speed = this.speed + (this.rTimer/(worldSpeedIn));
+        if(!(this.speed < 0)){
+          this.stop();
+        }
+      }
+
+      if(this.speed == 0){
+        this.stop();
+        console.log("stop");
+      }
+    }
     // update time for jumping
-    if(this.timerOn){
-      this.timer++;
+    if(this.jTimerOn){
+      this.jTimer++;
     }else if (this.state == 2) {
       this.state = 0;
     }
     // update y pos
     if(this.y > this.yFloor){
-      this.timer = 0;
-      this.timerOn = false;
+      this.jTimer = 0;
+      this.jTimerOn = false;
     }
-    var timeAT = this.timer/(worldSpeedIn/2);
+    var timeAT = this.jTimer/(worldSpeedIn/2);
     this.y = this.yFloor + ((0-this.yv)*(timeAT)) + ((1/2)*(0-this.ya)*((timeAT)*(timeAT)));
   }
 }

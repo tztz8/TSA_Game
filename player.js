@@ -126,11 +126,12 @@ class player {
       this.state = 0;
     }
     // update y pos
+    var timeAT = this.jTimer/(worldSpeedIn/2);
+    this.y = this.yFloor + ((0-this.yv)*(timeAT)) + ((1/2)*(0-this.ya)*((timeAT)*(timeAT)));
     if(this.y > this.yFloor){
+      this.y = this.yFloor;
       this.jTimer = 0;
       this.jTimerOn = false;
     }
-    var timeAT = this.jTimer/(worldSpeedIn/2);
-    this.y = this.yFloor + ((0-this.yv)*(timeAT)) + ((1/2)*(0-this.ya)*((timeAT)*(timeAT)));
   }
 }

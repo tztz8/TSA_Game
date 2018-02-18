@@ -49,9 +49,9 @@ class player {
 
   run(speed){
     this.speed = speed;
+    this.rTimer = 0;
     if(!this.rTimerOn){
       this.rTimerOn = true;
-      this.rTimer = 0;
     }
     this.state = 1;
   }
@@ -104,12 +104,12 @@ class player {
     if(this.rTimerOn){
       this.rTimer++;
       if(this.speed > 0){
-        this.speed = this.speed - (this.rTimer/(worldSpeedIn));
+        this.speed = this.speed - (this.rTimer/(worldSpeedIn/5));
         if(!(this.speed > 0)){
           this.stop();
         }
       }else if(this.speed < 0){
-        this.speed = this.speed + (this.rTimer/(worldSpeedIn));
+        this.speed = this.speed + (this.rTimer/(worldSpeedIn/5));
         if(!(this.speed < 0)){
           this.stop();
         }
@@ -117,7 +117,6 @@ class player {
 
       if(this.speed == 0){
         this.stop();
-        console.log("stop");
       }
     }
     // update time for jumping

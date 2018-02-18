@@ -38,6 +38,26 @@ function draw() {
     seling[i].show();
   }
   player1.show(width, worldSpeedStart);
+
+  // User Input
+  if (keyIsDown(LEFT_ARROW)){
+    player1.run(0-runingSpeed);
+  }else if (keyIsDown(RIGHT_ARROW)){
+    player1.run(runingSpeed);
+  }else if (keyIsDown(65)){// a = 65
+    player1.run(0-runingSpeed);
+  }else if (keyIsDown(68)){// d = 68
+    player1.run(runingSpeed);
+  }
+  if (keyIsDown(UP_ARROW)){
+    player1.jump(jumpV);
+  }else if (keyIsDown(DOWN_ARROW)){
+    player1.stop();
+  }else if (keyIsDown(87)){// w = 87
+    player1.jump(jumpV);
+  }else if (keyIsDown(83)){// s = 83
+    player1.stop();
+  }
 }
 
 function resetAll(){
@@ -52,18 +72,6 @@ function resetAll(){
 
 function keyTyped() {
   switch (key) {
-    case 'd':
-      player1.run(runingSpeed);
-      break;
-    case 'a':
-      player1.run(0-runingSpeed);
-      break;
-    case 's':
-      player1.stop();
-      break;
-    case 'w':
-      player1.jump(jumpV);
-      break;
     case 'r':
       resetAll();
       break;
@@ -77,6 +85,6 @@ function keyTyped() {
       worldSpeed = worldSpeedStart*2;
       break;
     default:
-    alert("That key is not in use key:"+key);
+    //alert("That key is not in use key:"+key);
   }
 }

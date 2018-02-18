@@ -34,7 +34,7 @@ function draw() {
   frameRate(worldSpeed);
   background("#00F1D3");// set the background to blue
   for(var i = 0; i < tilesSet.width; i++){
-    floor[i].show();
+    gameFloor[i].show();
     seling[i].show();
   }
   player1.show(width, worldSpeedStart);

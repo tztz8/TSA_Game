@@ -17,18 +17,17 @@ class tile {
   }
 }
 
-
 // seting up the floor
-var floor = new Array;
+var gameFloor = new Array;
 function setupFloor(floorNormal, floorLight) {
   for(var i = 0; i < tilesSet.width; i++){
     if (0 == i % 2){
-      floor[i] = new tile(i*tilesSet.size,
+      gameFloor[i] = new tile(i*tilesSet.size,
          height-tilesSet.size,
          floorLight,
          tilesSet.size);
     }else if (Math.abs(i % 2) == 1) {
-      floor[i] = new tile(i*tilesSet.size,
+      gameFloor[i] = new tile(i*tilesSet.size,
          height-tilesSet.size,
          floorNormal,
          tilesSet.size);

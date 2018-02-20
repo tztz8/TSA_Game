@@ -13,10 +13,13 @@
     <script type="text/javascript" src="Lib/p5.js"></script>
     <script type="text/javascript" src="Lib/addons/p5.dom.js"></script>
     <script type="text/javascript" src="Lib/addons/p5.sound.js"></script>
+		<!-- network libary -->
+		<script type="text/javascript" src="Lib/socket.io.js"></script>
 
     <!-- other files need for the game -->
     <script type="text/javascript" src="tiles.js"></script> <!-- help set up tiles -->
 		<script type="text/javascript" src="player.js"></script>
+		<script type="text/javascript" src="Network.js"></script> <!-- Multipayer suport -->
 		<!-- this is the script that startes every thing (in p5.js) -->
 		<script type="text/javascript" src="sketch.js"></script>
 	</head>
@@ -31,6 +34,15 @@
 			<TR>
 				<TD>
 					<div id='myContainer' alt="my p5.js scrip"></div> <!-- This is were the p5 scrip will run becuse with in the scrip it is told to be here-->
+				</TD>
+			</TR>
+			<TR>
+				<TD>
+					<p>Multipayer</p>
+					<form id="network" name="mult">
+						Server URL and Port:<input type="url" name="server" value="https://timbre.0ssh.ga:8192">
+					</form>
+					<button onclick="connect();">connect</button>
 				</TD>
 			</TR>
 			<TR>

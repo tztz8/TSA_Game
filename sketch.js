@@ -1,12 +1,13 @@
-var floorNormalimg;
-var floorLightimg;
-var selingNormalimg;
-
+// make var to store the floor and selimg
+var floorNormalimg;// set up normal tip of tile floor
+var floorLightimg;// set up light tip of tile floor
+var selingNormalimg;// set up seling floor
+// make the player
 var player1 = new player();
-
-var worldSpeed = 24;
-var worldSpeedStart = worldSpeed;
-
+// var to know the speed of this world
+var worldSpeed = 24;// Set to 24
+var worldSpeedStart = worldSpeed;// to beable to chane the speed of the world by remebeing the normal speed
+// 
 var runingSpeed = 8;
 var jumpV = 300;
 
@@ -16,6 +17,7 @@ function preload(){
   floorLightimg = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (1).png");
   selingNormalimg = loadImage("assets/images/gameart2d_com/png/Tiles/Tile (10).png");
 }
+
 function setup() {
   var myCanvas = createCanvas(tilesSet.width*tilesSet.size, tilesSet.height*tilesSet.size); // I save this to a variable so i can chage this about it
   myCanvas.parent('myContainer'); // I am tell the p5 scrip to put the canvas where i have the id of myContainer

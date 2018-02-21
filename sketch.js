@@ -7,9 +7,11 @@ var player1 = new player();
 // var to know the speed of this world
 var worldSpeed = 24;// Set to 24
 var worldSpeedStart = worldSpeed;// to beable to chane the speed of the world by remebeing the normal speed
-// 
+//
 var runingSpeed = 8;
 var jumpV = 300;
+// Multipayer Flage
+var mpF = false;
 
 function preload(){
   player1.load();
@@ -33,6 +35,9 @@ function setup() {
 }
 
 function draw() {
+  if (mpF){
+    worldSpeed = worldSpeedStart;
+  }
   frameRate(worldSpeed);
   background("#00F1D3");// set the background to blue
   for(var i = 0; i < tilesSet.width; i++){
@@ -78,13 +83,17 @@ function keyTyped() {
       resetAll();
       break;
     case '1':
-      worldSpeed = worldSpeedStart*0.5;
+      if(!mpF){
+        worldSpeed = worldSpeedStart*0.5;
+      }
       break;
     case '2':
       worldSpeed = worldSpeedStart;
       break;
     case '3':
-      worldSpeed = worldSpeedStart*2;
+      if(!mpF){
+        worldSpeed = worldSpeedStart*2;
+      }
       break;
     default:
     //alert("That key is not in use key:"+key);

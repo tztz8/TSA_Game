@@ -88,6 +88,10 @@ class player {
     }
     // print Image
     image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
+    if(mpF){
+      //console.log(this);
+      socket.emit("playerC", this);
+    }
     // change frame
     this.frameAt = this.frameAt + 1;
     // update pos in the x

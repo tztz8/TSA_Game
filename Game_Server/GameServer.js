@@ -44,10 +44,28 @@ var io = socket(server);
 // call the libary (io.socket) then say when a connection happen ('connection') then launch function (newConnection)
 io.sockets.on('connection', newConnection);
 
+//var nUsers = 0;
+
 function newConnection(socket){
   // show new users
   console.log("New connection ID:" + socket.id);
 
   // tell players of this user
-  
+  //nUsers++;
+  //io.sockets.emit("newPlayer", nUsers);
+
+  // reseave player data
+  socket.on("playerC", broadcastPlayer);
+  function broadcastPlayer(data){
+    var dataSend = {
+      id: socket.id,
+      playerData: data
+    }
+    socket.broadcast.emit("payerM", dataSend);
+  }
+
+  // when a payer disconnect
+  socket.on('disconnect', function(data) {
+    console.log('disconnect id:' + socket.id);
+  });
 }

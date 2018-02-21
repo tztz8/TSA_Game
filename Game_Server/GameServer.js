@@ -7,26 +7,25 @@ var express = require('express');
 var app = express();
 
 // files libary
-//var fs = require('fs');
+var fs = require('fs');
 // https prodicall libary
-//var https = require('https');
+var https = require('https');
 
 // the files need for https
-//var options = {
-    //key: fs.readFileSync('./privkey.pem').toString(),
-    //cert: fs.readFileSync('./cert.pem').toString()
-//};
+var options = {
+    key: fs.readFileSync('./privkey.pem').toString(),
+    cert: fs.readFileSync('./cert.pem').toString()
+};
 
 // Set a port listener to server at a port (port:8192)
-//var server = app.listen(8192); // not https
-//var server = https.createServer(options, app).listen(8192);
-var server = app.listen(8192);
+//var server = app.listen(8181); // not https
+var server = https.createServer(options, app).listen(8181);
 
 // this line of code is to host files on the port --> library.use(name of library.not changing files(folder));
 //app.use(express.static('puplic'));
 
-//var helmet = require('helmet');
-//app.use(helmet());
+var helmet = require('helmet');
+app.use(helmet());
 
 // Show that the Server is running
 console.log("My server is running");

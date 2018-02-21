@@ -27,26 +27,6 @@ class player {
     this.size = 80;
   }
 
-  load(){
-    // set each frame sate to a ary for the next sete
-    for(var i = 0; i < 3; i++){
-      this.frame[i] = [];
-    }
-    // Load imges
-    this.frameNumber[0] = 10;
-    for(var i = 1;i < 11; i++){ // Load Idle
-      this.frame[0][i] = loadImage("assets/images/gameart2d_com/png/Idle (" + i + ").png");
-    }
-    this.frameNumber[1] = 8
-    for(var i = 1;i < 9; i++){ // Load Run
-      this.frame[1][i] = loadImage("assets/images/gameart2d_com/png/Run (" + i + ").png");
-    }
-    this.frameNumber[2] = 10
-    for(var i = 1;i < 11; i++){ // Load Jump
-      this.frame[2][i] = loadImage("assets/images/gameart2d_com/png/Jump (" + i + ").png");
-    }
-  }
-
   run(speed){
     this.speed = speed;
     this.rTimer = 0;
@@ -137,9 +117,5 @@ class player {
       this.jTimer = 0;
       this.jTimerOn = false;
     }
-  }
-
-  superShow(){
-    image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
   }
 }

@@ -4,6 +4,9 @@ var floorLightimg;// set up light tip of tile floor
 var selingNormalimg;// set up seling floor
 // make the player
 var player1 = new player();
+// player images
+var playerImg = [];
+var playerImgNumber = [];
 // var to know the speed of this world
 var worldSpeed = 24;// Set to 24
 var worldSpeedStart = worldSpeed;// to beable to chane the speed of the world by remebeing the normal speed
@@ -14,7 +17,26 @@ var jumpV = 300;
 var mpF = false;
 
 function preload(){
-  player1.load();
+  // load default player imges
+  // set each frame sate to a ary for the next sete
+  for(var i = 0; i < 3; i++){
+    playerImg[i] = [];
+  }
+  // Load imges
+  playerImgNumber[0] = 10;
+  for(var i = 1;i < 11; i++){ // Load Idle
+    playerImg[0][i] = loadImage("assets/images/gameart2d_com/png/Idle (" + i + ").png");
+  }
+  playerImgNumber[1] = 8
+  for(var i = 1;i < 9; i++){ // Load Run
+    playerImg[1][i] = loadImage("assets/images/gameart2d_com/png/Run (" + i + ").png");
+  }
+  playerImgNumber[2] = 10
+  for(var i = 1;i < 11; i++){ // Load Jump
+    playerImg[2][i] = loadImage("assets/images/gameart2d_com/png/Jump (" + i + ").png");
+  }
+
+  // load tiles
   floorNormalimg = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (2).png");
   floorLightimg = loadImage("assets/images/gameart2d_com/png/Tiles/BGTile (1).png");
   selingNormalimg = loadImage("assets/images/gameart2d_com/png/Tiles/Tile (10).png");
@@ -28,14 +50,16 @@ function setup() {
   setupFloor(floorNormalimg, floorLightimg);
   setupSeling(selingNormalimg);
 
-  // set player inshal place
+  // set player inshal place and give the player it imges
   player1.x = 0;
   player1.y = 245;
   player1.yFloor = 245;
+  player1.frame = playerImg;
+  player1.frameNumber = playerImgNumber;
 }
 
 function draw() {
-  if (mpF){
+  if(mpF){
     worldSpeed = worldSpeedStart;
   }
   frameRate(worldSpeed);
@@ -44,6 +68,13 @@ function draw() {
     gameFloor[i].show();
     seling[i].show();
   }
+
+  if(mpF){
+    for(var i = 0; i < mPlayers.length; i++){
+      image(playerImg[mPlayers[i].playerData.state][mPlayers[i].playerData.frameAt], mPlayers[i].playerData.x, mPlayers[i].playerData.y, mPlayers[i].playerData.size, mPlayers[i].playerData.size);
+    }
+  }
+
   player1.show(width, worldSpeedStart);
 
   // User Input

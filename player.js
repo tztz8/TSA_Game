@@ -134,4 +134,8 @@ class player {
       this.jTimerOn = false;
     }
   }
+
+  superShow(){
+    image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
+  }
 }

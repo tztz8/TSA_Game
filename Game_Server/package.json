@@ -1,0 +1,31 @@
+{
+  "name": "game_server",
+  "version": "1.0.0",
+  "description": "game server for TSA Game at uhs 2018",
+  "main": "GameServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tztz8/TSA_Game.git"
+  },
+  "keywords": [
+    "Game",
+    "Server",
+    "JS",
+    "Socket",
+    "TSA",
+    "Node"
+  ],
+  "author": "Timbre Freeman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tztz8/TSA_Game/issues"
+  },
+  "homepage": "https://tztz8.github.io/TSA_Game/",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}

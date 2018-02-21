@@ -70,7 +70,14 @@ class player {
     image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
     if(mpF){
       //console.log(this);
-      socket.emit("playerC", this);
+      var data = {
+        state: this.state,
+        frameAt: this.frameAt,
+        x: this.x,
+        y: this.y,
+        size: this.size
+      }
+      socket.emit("playerC", data);
     }
     // change frame
     this.frameAt = this.frameAt + 1;

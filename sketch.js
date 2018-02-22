@@ -127,13 +127,22 @@ function keyTyped() {
       resetAll();
       break;
     case '1':
-      worldSpeed = worldSpeedStart*0.5;
+      worldSpeed = worldSpeed*0.5;
       break;
     case '2':
       worldSpeed = worldSpeedStart;
       break;
     case '3':
-      worldSpeed = worldSpeedStart*2;
+      worldSpeed = worldSpeed*2;
+      break;
+    case 'z':
+      player1.size = player1.size*0.5;
+      break;
+    case 'x':
+      player1.size = 80;
+      break;
+    case 'c':
+      player1.size = player1.size*2;
       break;
     default:
     //alert("That key is not in use key:"+key);

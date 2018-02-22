@@ -69,7 +69,7 @@ function draw() {
     }
   }
   frameRate(worldSpeed);// imperment the worldSpeed
-  
+
   background("#00F1D3");// set the background to blue
 
   // draw the floor and seling
@@ -86,7 +86,9 @@ function draw() {
   // draw and update the player
   player1.show(width, worldSpeedStart);
 
-
+  // update the data box
+  document.getElementById('dataBox').innerHTML = ("<p>WorldSpeed is at:" + worldSpeed +
+    "<br>Number of Players:" + (mPlayers.length+1) + "</p>");
 
   // User Input
   if (keyIsDown(LEFT_ARROW)){

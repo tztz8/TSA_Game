@@ -60,6 +60,7 @@ function setup() {
 }
 
 function draw() {
+  // if Multipayer is on change the speed of other players world to mach this world
   if(mpF){
     //worldSpeed = worldSpeedStart;
     if(!(worldSpeed == worldSpeedBefore)){
@@ -67,20 +68,25 @@ function draw() {
       worldSpeedBefore == worldSpeed;
     }
   }
-  frameRate(worldSpeed);
+  frameRate(worldSpeed);// imperment the worldSpeed
+  
   background("#00F1D3");// set the background to blue
+
+  // draw the floor and seling
   for(var i = 0; i < tilesSet.width; i++){
     gameFloor[i].show();
     seling[i].show();
   }
-
+  // draw the Multipayers if Multipayer is on
   if(mpF){
     for(var i = 0; i < mPlayers.length; i++){
       image(playerImg[mPlayers[i].playerData.state][mPlayers[i].playerData.frameAt], mPlayers[i].playerData.x, mPlayers[i].playerData.y, mPlayers[i].playerData.size, mPlayers[i].playerData.size);
     }
   }
-
+  // draw and update the player
   player1.show(width, worldSpeedStart);
+
+
 
   // User Input
   if (keyIsDown(LEFT_ARROW)){

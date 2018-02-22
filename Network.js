@@ -2,37 +2,39 @@ var socket;
 var mPlayers = [];
 var mpCRF = false;
 
+// start the connext to the server proces
 function connect(){
-  if(!mpCRF){
+  if(!mpCRF){ // to check if we are alread connect or trying to connect
     // connect to the server, get the url/port from the box on the page
     socket = io.connect(document.getElementById("network").elements[0].value);
     socket.on("payerM", updateMP);// say wich function to run when get a nother palyer data come in
     socket.on("payerMR", removeMPlayer);// when resaving playerMR run removeMPlayer
     socket.on("worldSpeed", updateWS);// when resave worldspeed run updateWS
-    //socket.on("newPlayer", newMPlayer);
-    setTimeout(CheckConnect, 500);
-    console.log(document.getElementById("network").elements[0].value);
-    mpCRF = true;
+    setTimeout(CheckConnect, 600);// after a hafe of a secent check if we are connect
+    mpCRF = true;// set the flag that we try to conect
   }else{
+    /* alert the users that thay need to refresh the page to reset the fage's and var
+      to connect to a difrent URL andor Port */
     alert("ether try to connect or is connect refresh the page to chage url");
   }
 }
 
+// check if we are connect to the game server
 function CheckConnect () {
-    //console.log('check 1', socket.connected);
     if (!socket.connected){
-        alert("The server is not working at this time");
-    }else{
-        //socket.emit('update', "resave");
+      // tell the users that is has not yet got connect to the server
+      alert("The server is not working at this time");
     }
-    mpF = true;
+    mpF = true; // Set the Multipayer flag to on-True
 }
 
+// update the world speed from the server
 function updateWS(data){
   worldSpeed = data;
   worldSpeedBefore = worldSpeed;
 }
 
+// update the Multipayer or add a new player
 function updateMP(data){
   //console.log(data);
 
@@ -43,7 +45,7 @@ function updateMP(data){
     if (mPlayers[i].id == data.id){
       newPlayerIF =  false;
       mPlayers[i].playerData = data.playerData;
-      break;
+      break; // to stop runing code that it doesnt need to
     }
   }
 
@@ -53,22 +55,9 @@ function updateMP(data){
   }
 }
 
+// remove a Multipayer that disconnect from the server
 function removeMPlayer(data){
   mPlayers = mPlayers.filter(function(item){
     return item.id != data;
   })
-  /*
-  for(var i = 0; i < mPlayers.length; i++){
-    if (mPlayers[i].id == data){
-
-      break;
-    }
-  }
-  alert("something went wrong");
-  console.log("Someone the server say someone disconnect but can't find that player in the mPlayers");
-  console.log("mPlayer:");
-  console.log(mPlayers);
-  console.log("data resave from server-ID:");
-  console.log(data);
-  */
 }

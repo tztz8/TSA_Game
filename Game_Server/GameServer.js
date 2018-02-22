@@ -72,5 +72,6 @@ function newConnection(socket){
   // when a payer disconnect
   socket.on('disconnect', function(data) {
     console.log('disconnect id:' + socket.id);
+    socket.broadcast.emit("payerMR", socket.id);
   });
 }

@@ -74,7 +74,7 @@ class player {
       var data = {// setingup the data need only to remove lage
         state: this.state,
         frameAt: this.frameAt,
-        x: this.x,
+        x: this.x-5,
         y: this.y,
         size: this.size
       }
@@ -111,6 +111,8 @@ class player {
         this.stop();
       }
     }
+    // update the y floor posishon
+    this.yFloor = (((height-tilesSet.size)+10)-this.size);
     // update time for jumping
     if(this.jTimerOn){
       this.jTimer++;

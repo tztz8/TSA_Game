@@ -10,6 +10,7 @@ var playerImgNumber = [];
 // var to know the speed of this world
 var worldSpeed = 24;// Set to 24
 var worldSpeedStart = worldSpeed;// to beable to chane the speed of the world by remebeing the normal speed
+var worldSpeedBefore = worldSpeed;
 //
 var runingSpeed = 8;
 var jumpV = 300;
@@ -60,7 +61,11 @@ function setup() {
 
 function draw() {
   if(mpF){
-    worldSpeed = worldSpeedStart;
+    //worldSpeed = worldSpeedStart;
+    if(!(worldSpeed == worldSpeedBefore)){
+      socket.emit("worldSpeed", worldSpeed);
+      worldSpeedBefore == worldSpeed;
+    }
   }
   frameRate(worldSpeed);
   background("#00F1D3");// set the background to blue
@@ -114,17 +119,13 @@ function keyTyped() {
       resetAll();
       break;
     case '1':
-      if(!mpF){
-        worldSpeed = worldSpeedStart*0.5;
-      }
+      worldSpeed = worldSpeedStart*0.5;
       break;
     case '2':
       worldSpeed = worldSpeedStart;
       break;
     case '3':
-      if(!mpF){
-        worldSpeed = worldSpeedStart*2;
-      }
+      worldSpeed = worldSpeedStart*2;
       break;
     default:
     //alert("That key is not in use key:"+key);

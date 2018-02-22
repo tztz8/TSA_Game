@@ -63,6 +63,12 @@ function newConnection(socket){
     socket.broadcast.emit("payerM", dataSend);
   }
 
+  // resave worldSpeed
+  socket.on("worldSpeed", broadcastWorldSpeed);
+  function broadcastWorldSpeed(data){
+    socket.broadcast.emit("worldSpeed", data);
+  }
+
   // when a payer disconnect
   socket.on('disconnect', function(data) {
     console.log('disconnect id:' + socket.id);

@@ -68,16 +68,17 @@ class player {
     }
     // print Image
     image(this.frame[this.state][this.frameAt], this.x, this.y, this.size, this.size);
-    if(mpF){
+    // Multipayer
+    if(mpF){ // check is Online Multipayer is true
       //console.log(this);
-      var data = {
+      var data = {// setingup the data need only to remove lage
         state: this.state,
         frameAt: this.frameAt,
         x: this.x,
         y: this.y,
         size: this.size
       }
-      socket.emit("playerC", data);
+      socket.emit("playerC", data);// seding the data to the server
     }
     // change frame
     this.frameAt = this.frameAt + 1;

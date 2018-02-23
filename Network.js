@@ -75,6 +75,9 @@ function changeServerHTML(serverin){
     case 3:
       serverURL = "http://10.0.0.50:8181";
       break;
+    case 4:
+      serverURL = "https://timbre.0ssh.ga:8282";
+      break;
     default:
     serverURL = "https://timbre.0ssh.ga:8181";
   }

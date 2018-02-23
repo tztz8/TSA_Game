@@ -88,7 +88,8 @@ function draw() {
 
   // update the data box
   document.getElementById('dataBox').innerHTML = ("<p>WorldSpeed is at:" + worldSpeed +
-    "<br>Number of Players:" + (mPlayers.length+1) + "</p>");
+    "<br>Number of Players:" + (mPlayers.length+1) +
+    "<br>Size of You:" + (player1.size) + "</p>");
 
   // User Input
   if (keyIsDown(LEFT_ARROW)){
@@ -119,6 +120,7 @@ function resetAll(){
   player1.timer = 0;
   player1.timerOn = false;
   player1.y = player1.yFloor;
+  player1.size = 80;
 }
 
 function keyTyped() {
@@ -127,22 +129,22 @@ function keyTyped() {
       resetAll();
       break;
     case '1':
-      worldSpeed = worldSpeed*0.5;
+      worldSpeed = worldSpeed*0.75;
       break;
     case '2':
       worldSpeed = worldSpeedStart;
       break;
     case '3':
-      worldSpeed = worldSpeed*2;
+      worldSpeed = worldSpeed*1.25;
       break;
     case 'z':
-      player1.size = player1.size*0.5;
+      player1.size = player1.size*0.75;
       break;
     case 'x':
       player1.size = 80;
       break;
     case 'c':
-      player1.size = player1.size*2;
+      player1.size = player1.size*1.25;
       break;
     default:
     //alert("That key is not in use key:"+key);

@@ -61,3 +61,22 @@ function removeMPlayer(data){
     return item.id != data;
   })
 }
+
+// difrent server
+function changeServerHTML(serverin){
+  var serverURL;
+  switch (serverin) {
+    case 1:
+      serverURL = "https://timbre.0ssh.ga:8181";
+      break;
+    case 2:
+      serverURL = "http://localhost:8181";
+      break;
+    case 3:
+      serverURL = "http://10.0.0.50:8181";
+      break;
+    default:
+    serverURL = "https://timbre.0ssh.ga:8181";
+  }
+  document.getElementById("network").elements[0].value = serverURL;
+}

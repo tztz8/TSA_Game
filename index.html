@@ -28,7 +28,10 @@
 		<TABLE Align="center" Border="1" id="wrapper">
 			<TR>
 				<TD>
-					<p>use w,a,s,d for moving<br>1,2,3 to change the speed of the world<br>r to rest the world recomend to use f5 insted</p>
+					<p>use w,a,s,d and arrow keys for moving
+						<br>1 is to -%25, 2 is to set to normal, 3 is to +%25 of the World Speed
+						<br>z is to -%25, x is to set to normal, c is to +%25 of the player size
+						<br>r to rest the local world</p>
 				</TD>
 			</TR>
 			<TR>
@@ -46,6 +49,11 @@
 						Server URL and Port:<input type="url" name="server" value="https://timbre.0ssh.ga:8181">
 					</form>
 					<button onclick="connect();">connect</button>
+				</TD>
+				<TD>
+					<button onclick="changeServerHTML(1);">Timbre Home Server</button><br>
+					<button onclick="changeServerHTML(3);">Local 10.0.0.50 Server</button><br>
+					<button onclick="changeServerHTML(2);">Localhost Server</button>
 				</TD>
 			</TR>
 			<TR>

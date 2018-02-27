@@ -4,6 +4,13 @@ var tilesSet = {
   size: 80
 };
 
+var grid = [];
+function setUpGrid(){
+  for(var i = 0; i < tilesSet.height; i++){
+    grid[i] = [];
+  }
+}
+
 class tile {
   constructor(x, y, imgLd, size){
     this.x = x;
@@ -18,16 +25,15 @@ class tile {
 }
 
 // seting up the floor
-var gameFloor = new Array;
 function setupFloor(floorNormal, floorLight) {
   for(var i = 0; i < tilesSet.width; i++){
     if (0 == i % 2){
-      gameFloor[i] = new tile(i*tilesSet.size,
+      grid[tilesSet.height-1][i] = new tile(i*tilesSet.size,
          height-tilesSet.size,
          floorLight,
          tilesSet.size);
     }else if (Math.abs(i % 2) == 1) {
-      gameFloor[i] = new tile(i*tilesSet.size,
+      grid[tilesSet.height-1][i] = new tile(i*tilesSet.size,
          height-tilesSet.size,
          floorNormal,
          tilesSet.size);
@@ -39,10 +45,9 @@ function setupFloor(floorNormal, floorLight) {
 }
 
 // seting up the floor
-var seling = new Array;
 function setupSeling(selingNormal) {
   for(var i = 0; i < tilesSet.width; i++){
-    seling[i] = new tile(i*tilesSet.size,
+    grid[0][i] = new tile(i*tilesSet.size,
        0,
        selingNormal,
        tilesSet.size);

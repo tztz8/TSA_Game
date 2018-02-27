@@ -47,6 +47,9 @@ function setup() {
   var myCanvas = createCanvas(tilesSet.width*tilesSet.size, tilesSet.height*tilesSet.size); // I save this to a variable so i can chage this about it
   myCanvas.parent('myContainer'); // I am tell the p5 scrip to put the canvas where i have the id of myContainer
 
+  // setup grid
+  setUpGrid();
+
   // seting up the floor amd seling
   setupFloor(floorNormalimg, floorLightimg);
   setupSeling(selingNormalimg);
@@ -74,8 +77,11 @@ function draw() {
 
   // draw the floor and seling
   for(var i = 0; i < tilesSet.width; i++){
-    gameFloor[i].show();
-    seling[i].show();
+    for(var v = 0; v < tilesSet.height; v++){
+      if(!(grid[v][i] == undefined)){
+        grid[v][i].show();
+      }
+    }
   }
   // draw the Multipayers if Multipayer is on
   if(mpF){

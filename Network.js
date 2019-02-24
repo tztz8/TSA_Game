@@ -67,7 +67,7 @@ function changeServerHTML(serverin){
   var serverURL;
   switch (serverin) {
     case 1:
-      serverURL = "https://home.tftinker.club:8181";
+      serverURL = "https://dcnhost.tftinker.tech:8181";
       break;
     case 2:
       serverURL = "http://localhost:8181";
@@ -76,10 +76,10 @@ function changeServerHTML(serverin){
       serverURL = "http://10.0.0.50:8181";
       break;
     case 4:
-      serverURL = "https://home.tftinker.club:8282";
+      serverURL = "https://ssdvps.tftinker.tech:8181";
       break;
     default:
-    serverURL = "https://home.tftinker.club:8181";
+    serverURL = "https://dcnhost.tftinker.tech:8181";
   }
   document.getElementById("network").elements[0].value = serverURL;
 }
